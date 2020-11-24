@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+    <ul class="vertical-menu">
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Dashboard</span></img>
+            </a>
+
+        </li>
+      
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Customer</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                 <li>
+                    <a href="#{application.contextPath}/app/customer/customer_category.xhtml">Customer Category</a>
+                </li>
+                 <li>
+                    <a href="#{application.contextPath}/app/customer/customer.xhtml">Customer</a>
+                </li>
+                 <li>
+                    <a href="javaScript:void();">Customer Payment</a>
+                </li>
+                 <li>
+                    <a href="javaScript:void();">Customer Transaction</a>
+                </li>
+                
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Inventory</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                 <li>
+                    <a href="#{application.contextPath}/app/inventory/product_category.xhtml">Drug Category</a>
+                </li>
+                 <li>
+                    <a href="#{application.contextPath}/app/inventory/product.xhtml">Drug</a>
+                </li>
+                 <li>
+                    <a href="javaScript:void();">Batches</a>
+                </li>
+                
+               
+            </ul>
+        </li>
+
+       
+        
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>POS/Bill</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+             <ul class="vertical-submenu">
+                 <li>
+                    <a href="javaScript:void();">Whole Sale</a>
+                </li>
+                 <li>
+                    <a href="javaScript:void();">Retail</a>
+                </li>
+                 <li>
+                    <a href="javaScript:void();">Report</a>
+                </li>
+                
+               
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Purchase</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                <li><a href="#{application.contextPath}/app/configuration/group_company.xhtml">Purchases</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Purchase Payment</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Purchase Returns</a></li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Stock Adjustment</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                <li><a href="#{application.contextPath}/app/configuration/group_company.xhtml">Stock Adjustment</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Stock Adjustment Report</a></li>
+               
+            </ul>
+        </li>
+       
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Expenses</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                <li><a href="#{application.contextPath}/app/configuration/group_company.xhtml">Expense Items</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Expense</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Expense Report</a></li>
+               
+            </ul>
+        </li>
+        
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Reports</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                <li><a href="#{application.contextPath}/app/inventory/warehouse.xhtml">Warehouse Report</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/subsidiary.xhtml">Sales Report</a></li>
+               
+            </ul>
+        </li>
+        <li>
+            <a href="javaScript:void();">
+                <img src="#{application.contextPath}/resources/assets/images/svg-icon/dashboard.svg" class="img-fluid" 
+                     alt="dashboard"><span>Settings</span><i class="feather icon-chevron-right pull-right"></i></img>
+            </a>
+            <ul class="vertical-submenu">
+                <li><a href="#{application.contextPath}/app/configuration/company.xhtml">Company</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/bank.xhtml">Bank</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/bank_branch.xhtml">Bank Branch</a></li>
+                <li><a href="#{application.contextPath}/app/configuration/bank_account.xhtml">Bank Account</a></li>
+                <li><a href="javaScript:void();">MOMO Account</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+
+</h:panelGroup>
+

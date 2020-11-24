@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+        Bank Branch Information
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank Branch Information</h5>
+                    </div>
+                    <h:form >
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="bank">Bank</label>
+                                    <h:selectOneMenu class="form-control" id="bank" value="#{bankAccountController.bankAccount.bank}">
+                                        <f:ajax event="valueChange" execute="@form" render="bankBranch" listener="#{bankAccountController.loadBankBranches()}"/>
+                                        <f:selectItem itemLabel="SELECT ONE"/>
+                                        <f:selectItems value="#{commonOptions.allBank}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="bankBranch">Branch</label>
+                                    <h:selectOneMenu class="form-control" id="bankBranch" value="#{bankAccountController.bankAccount.bankBranch}">
+                                        <f:selectItem itemLabel="SELECT ONE" noSelectionOption="true"/>
+                                        <f:selectItems value="#{bankAccountController.bankBranches}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="accountName">Account Name</label>
+                                    <input type="text" class="form-control" id="accountName" jsf:value="#{bankAccountController.bankAccount.accountName}"/>
+                                </div>
+                               
+                                <div class="form-group col-md-6">
+                                    <label for="accountNumber">Account Number</label>
+                                    <input type="text" class="form-control" id="accountNumber" jsf:value="#{bankAccountController.bankAccount.accountNumber}"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" jsf:action="#{bankAccountController.saveMethod()}">Save</button>
+                            <button type="submit" class="btn btn-danger" jsf:action="#{bankAccountController.clearMethod()}">Clear</button>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank List</h5>
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <div class="table-responsive">
+                                <table id="default-datatable" class="display table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Account Name</th>
+                                            <th>Account No</th>
+                                            <th>Bank</th>
+                                            <th>Branch</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat value="#{bankAccountController.findAll()}" var="account">
+                                            <tr>
+                                                <td>#{account.accountName}</td>
+                                                <td>#{account.accountNumber}</td>
+                                                <td>#{account.bank.bankName}</td>
+                                                <td>#{account.bankBranch.branchName}</td>
+                                                <td>
+                                                    <button type="submit" class=" btn btn-sm btn-info" jsf:action="#{bankAccountController.editMethod(account)}"><span class="ti-pencil"></span></button>
+                                                    <button type="submit" class=" btn btn-sm btn-danger" jsf:action="#{bankAccountController.deleteMethod(account)}"><span class="ti-trash"></span></button>
+                                                </td>
+
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody> 
+                                </table>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ui:define>
+</ui:composition>

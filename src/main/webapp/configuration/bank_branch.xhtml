@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+        Bank Branch Information
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank Branch Information</h5>
+                    </div>
+                    <h:form>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="bank">Bank</label>
+                                    <h:selectOneMenu class="form-control" id="bank" value="#{bankBranchController.bankBranch.bank}">
+                                        <f:selectItem itemLabel="SELECT BANK"/>
+                                        <f:selectItems value="#{commonOptions.allBank}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="branchName">Branch Name</label>
+                                    <input type="text" class="form-control" id="branchName" jsf:value="#{bankBranchController.bankBranch.branchName}"/>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="telephone">Telephone</label>
+                                    <input type="text" class="form-control" id="telephone" jsf:value="#{bankBranchController.bankBranch.telephone}"/>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="emailAddress">Email Address</label>
+                                    <input type="text" class="form-control" id="emailAddress" jsf:value="#{bankBranchController.bankBranch.emailAddress}"/>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="location">Physical Location</label>
+                                    <input type="text" class="form-control" id="location" jsf:value="#{bankBranchController.bankBranch.location}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" jsf:action="#{bankBranchController.saveMethod()}">Save</button>
+                            <button type="submit" class="btn btn-danger" jsf:action="#{bankBranchController.clearMethod()}">Clear</button>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank List</h5>
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                        <div class="table-responsive">
+                            <table id="default-datatable" class="display table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Bank</th>
+                                        <th>Branch</th>
+                                        <th>Telephone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{bankBranchController.findAll()}" var="branch">
+                                        <tr>
+                                            <td>#{branch.bank.bankName}</td>
+                                            <td>#{branch.branchName}</td>
+                                            <td>#{branch.telephone}</td>
+                                            <td>
+                                                <button type="submit" class=" btn btn-sm btn-info" jsf:action="#{bankBranchController.editMethod(branch)}"><span class="ti-pencil"></span></button>
+                                                <button type="submit" class=" btn btn-sm btn-danger" jsf:action="#{bankBranchController.deleteMethod(branch)}"><span class="ti-trash"></span></button>
+                                            </td>
+
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody> 
+                            </table>
+                        </div>
+                            </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ui:define>
+</ui:composition>

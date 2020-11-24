@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+        Bank Information
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank Information</h5>
+                    </div>
+                    <h:form>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="bankName">Bank Name</label>
+                                    <input type="text" class="form-control" id="bankName" jsf:value="#{bankController.bank.bankName}"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="telephone">Bank Telephone</label>
+                                    <input type="text" class="form-control" id="telephone" jsf:value="#{bankController.bank.telephone}"/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="emailAddress">Email Address</label>
+                                    <input type="text" class="form-control" id="emailAddress" jsf:value="#{bankController.bank.emailAddress}"/>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" id="location" jsf:value="#{bankController.bank.location}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" jsf:action="#{bankController.saveMethod()}">Save</button>
+                            <button type="submit" class="btn btn-danger" jsf:action="#{bankController.clearMethod()}">Clear</button>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Bank List</h5>
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                        <div class="table-responsive">
+                            <table id="default-datatable" class="display table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Bank</th>
+                                        <th>Telephone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{bankController.findAll()}" var="bank">
+                                        <tr>
+                                            <td>#{bank.bankName}</td>
+                                            <td>#{bank.telephone}</td>
+                                            <td>
+                                                <button type="submit" class=" btn btn-sm btn-info" jsf:action="#{bankController.editMethod(bank)}"><span class="ti-pencil"></span></button>
+                                                <button type="submit" class=" btn btn-sm btn-danger" jsf:action="#{bankController.deleteMethod(bank)}"><span class="ti-trash"></span></button>
+                                            </td>
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody> 
+                            </table>
+                        </div>
+                            </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </ui:define>
+</ui:composition>

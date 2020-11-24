@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+        Purchase Item Information
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-lg-10 col-md-10">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <h5 class="card-title">Purchase Item Information</h5>
+                    </div>
+                    <h:form>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="supplier">Supplier</label>
+                                    <h:selectOneMenu class="form-control" id="supplier" value="#{purchaseItemController.purchaseItem.supplierProduct.supplier}">
+                                        <f:ajax event="valueChange" execute="@form" render="product" listener="#{purchaseItemController.loadSupplierProducts()}"/>
+                                        <f:selectItem itemLabel="SELECT ONE"/>
+                                        <f:selectItems value="#{commonOptions.suppliers}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="product">Supplier Products</label>
+                                    <h:selectOneMenu class="form-control" id="product" value="#{purchaseItemController.purchaseItem.supplierProduct.product}">
+                                        <f:selectItem itemLabel="SELECT ONE"/>
+                                        <f:selectItems value="#{purchaseItemController.supplierProducts}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+<!--                            <button type="submit" class="btn btn-primary" jsf:action="#{manufacturerController.saveMethod()}">Save</button>
+                            <button type="submit" class="btn btn-danger" jsf:action="#{manufacturerController.clearMethod()}">Clear</button>-->
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+       Company Branch
+    </ui:define>
+    <ui:define name="content">
+        <div class="col-lg-10">
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title">Company Branch Information</h5>
+                </div>
+                <h:form>
+                    <div class="card-body">
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="companyName">Branch Name</label>
+                                <input type="text" class="form-control" id="companyName" jsf:value="#{companyBranchController.companyBranch.branchName}"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="telephone">Telephone</label>
+                                <input type="text" class="form-control" id="telephone" jsf:value="#{companyBranchController.companyBranch.telephone}"/>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="text" class="form-control" id="emailAddress" jsf:value="#{companyBranchController.companyBranch.emailAddress}"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="location">Location</label>
+                                <input type="text" class="form-control" id="location" jsf:value="#{companyBranchController.companyBranch.location}"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="location">GPS Address</label>
+                                <input type="text" class="form-control" id="location" jsf:value="#{companyBranchController.companyBranch.ghanaPostCode}"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary" jsf:action="#{companyBranchController.saveMethod()}">Save</button>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

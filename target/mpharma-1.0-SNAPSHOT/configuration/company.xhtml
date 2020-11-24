@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+       Company
+    </ui:define>
+    <ui:define name="content">
+        <div class="col-lg-10">
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title">Company Information</h5>
+                </div>
+                <h:form>
+                    <div class="card-body">
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="companyName">Company Name</label>
+                                <input type="text" class="form-control" id="companyName" jsf:value="#{companyController.company.companyName}"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="telephone">Telephone</label>
+                                <input type="text" class="form-control" id="telephone" jsf:value="#{companyController.company.telephone}"/>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="emailAddress">Email Address</label>
+                                <input type="text" class="form-control" id="emailAddress" jsf:value="#{companyController.company.emailAddress}"/>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="location">Location</label>
+                                <input type="text" class="form-control" id="location" jsf:value="#{companyController.company.location}"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary" jsf:action="#{companyController.saveMethod()}">Save</button>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
