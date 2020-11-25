@@ -37,7 +37,7 @@ public class ProductController implements Serializable, MPharmaMethods {
     
     @Getter
     @Setter
-    private Product product;
+    private Product product = new Product();
 
     /**
      * Creates a new instance of ProductController

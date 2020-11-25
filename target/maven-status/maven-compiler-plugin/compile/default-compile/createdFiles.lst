@@ -1,3 +1,4 @@
+com\genesys\mpharma\convertor\ProductCategoryConvertor.class
 com\genesys\mpharma\controller\suppliers\SupplierProductController.class
 com\genesys\mpharma\entity\setting\BankAccount.class
 com\genesys\mpharma\controller\suppliers\SupplierController.class
@@ -11,7 +12,9 @@ com\genesys\mpharma\entity\inventory\WareHouse.class
 com\genesys\mpharma\entity\inventory\ProductCategory.class
 com\genesys\mpharma\controller\purchases\PurchasesController.class
 com\genesys\mpharma\entity\purchases\PurchaseItem.class
+com\genesys\mpharma\entity\manufacturer\Manufacturer_.class
 com\genesys\mpharma\entity\customer\Customer_.class
+com\genesys\mpharma\entity\manufacturer\Manufacturer.class
 com\genesys\mpharma\util\Msg.class
 com\genesys\mpharma\entity\setting\Company.class
 com\genesys\mpharma\entity\inventory\Product.class
@@ -32,6 +35,7 @@ com\genesys\mpharma\controller\purchases\PurchaseTransactionController.class
 com\genesys\mpharma\convertor\BankConvertor.class
 com\genesys\mpharma\entity\customer\Customer.class
 com\genesys\mpharma\entity\setting\MobileNetwork.class
+com\genesys\mpharma\controller\manufacturer\ManufacturerController.class
 com\genesys\mpharma\entity\setting\Bank_.class
 com\genesys\mpharma\entity\suppliers\Supplier.class
 com\genesys\mpharma\controller\inventory\ProductCategoryController.class
@@ -41,6 +45,7 @@ com\genesys\mpharma\controller\customer\CustomerCategoryController.class
 com\genesys\mpharma\entity\EntityModel_.class
 com\genesys\mpharma\entity\setting\BankBranch.class
 com\genesys\mpharma\entity\enums\CustomerGroup.class
+com\genesys\mpharma\convertor\MobileNetworkConvertor.class
 com\genesys\mpharma\controller\setting\MobileNetworkAccountController.class
 com\genesys\mpharma\entity\setting\Bank.class
 com\genesys\mpharma\entity\setting\Company_.class
@@ -61,3 +66,4 @@ com\genesys\mpharma\controller\setting\BankController.class
 com\genesys\mpharma\entity\purchases\PurchaseItem_.class
 com\genesys\mpharma\controller\customer\customerController.class
 com\genesys\mpharma\entity\setting\CompanyBranch_.class
+com\genesys\mpharma\convertor\ManufacturerConvertor.class

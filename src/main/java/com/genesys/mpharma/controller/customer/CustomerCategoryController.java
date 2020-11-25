@@ -37,7 +37,7 @@ public class CustomerCategoryController implements Serializable, MPharmaMethods{
     
     @Getter
     @Setter
-    private CustomerCategory customerCategory;
+    private CustomerCategory customerCategory = new CustomerCategory();
 
     /**
      * Creates a new instance of CustomerCategoryController

@@ -37,7 +37,7 @@ public class ProductCategoryController implements Serializable, MPharmaMethods {
     
     @Getter
     @Setter
-    private ProductCategory productCategory;
+    private ProductCategory productCategory = new ProductCategory();
     /**
      * Creates a new instance of ProductCategory
      */
