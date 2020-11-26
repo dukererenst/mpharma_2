@@ -58,17 +58,18 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="product">Quantity</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" jsf:value="#{purchasesController.purchaseItem.quantity}" />
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="product">Unit Price</label>
-                                    <input type="text" class="form-control" />
+                                    <f:ajax event="input" execute="@form" render="totalCost" listener="#{purchasesController.updateCost()}"/>
+                                    <input type="text" class="form-control" jsf:value="#{purchasesController.purchaseItem.unitCostPrice}" />
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="product">Total Cost</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" id="totalCost" class="form-control" jsf:value="#{purchasesController.purchaseItem.totalAmount}"  />
                                 </div>    
                             </div>
                         </div>
