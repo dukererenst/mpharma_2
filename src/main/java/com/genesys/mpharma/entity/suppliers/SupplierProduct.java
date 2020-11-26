@@ -31,6 +31,12 @@ public class SupplierProduct extends EntityModel{
     @JoinColumn(name = "supplier")
     private Supplier supplier; 
     
+    @ManyToOne
     @JoinColumn(name = "product")
     private Product product; 
+
+    @Override
+    public String toString() {
+        return product.getMedicineName();
+    }  
 }

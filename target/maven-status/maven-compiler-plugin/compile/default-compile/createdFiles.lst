@@ -46,6 +46,7 @@ com\genesys\mpharma\entity\EntityModel_.class
 com\genesys\mpharma\entity\setting\BankBranch.class
 com\genesys\mpharma\entity\enums\CustomerGroup.class
 com\genesys\mpharma\convertor\MobileNetworkConvertor.class
+com\genesys\mpharma\convertor\SupplierConvertor.class
 com\genesys\mpharma\controller\setting\MobileNetworkAccountController.class
 com\genesys\mpharma\entity\setting\Bank.class
 com\genesys\mpharma\entity\setting\Company_.class
@@ -60,6 +61,7 @@ com\genesys\mpharma\controller\inventory\WareHouseController.class
 com\genesys\mpharma\commons\CommonOptions.class
 com\genesys\mpharma\entity\setting\BankBranch_.class
 com\genesys\mpharma\controller\setting\BankAccountController.class
+com\genesys\mpharma\convertor\ProductConvertor.class
 com\genesys\mpharma\entity\setting\MobileNetworkAccount_.class
 com\genesys\mpharma\controller\setting\BankBranchController.class
 com\genesys\mpharma\controller\setting\BankController.class

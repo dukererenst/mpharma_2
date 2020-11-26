@@ -25,8 +25,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="supplier">Supplier</label>
-                                    <h:selectOneMenu class="form-control" id="supplier" value="#{purchaseItemController.purchaseItem.supplierProduct.supplier}">
-                                        <f:ajax event="valueChange" execute="@form" render="product" listener="#{purchaseItemController.loadSupplierProducts()}"/>
+                                    <h:selectOneMenu class="form-control" id="supplier" value="#{purchasesController.purchases.supplier}">
+                                        <f:ajax event="valueChange" execute="@form" render="product" listener="#{purchasesController.loadSupplierProducts()}"/>
                                         <f:selectItem itemLabel="SELECT ONE"/>
                                         <f:selectItems value="#{commonOptions.suppliers}"/>
                                     </h:selectOneMenu>
@@ -53,7 +53,10 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="product">Product Name</label>
-                                    <input type="text" class="form-control" />
+                                    <h:selectOneMenu class="form-control" id="product" value="#{purchasesController.purchaseItem.supplierProduct}">
+                                        <f:selectItem itemLabel="SELECT ONE"/>
+                                        <f:selectItems value="#{purchasesController.supplierProducts}"/>
+                                    </h:selectOneMenu>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -62,19 +65,19 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="product">Unit Price</label>
-                                    <f:ajax event="input" execute="@form" render="totalCost" listener="#{purchasesController.updateCost()}"/>
-                                    <input type="text" class="form-control" jsf:value="#{purchasesController.purchaseItem.unitCostPrice}" />
+                                    <label for="price">Unit Price</label>
+                                    <f:ajax event="keyup" execute="@form" render="totalCost" listener="#{purchasesController.updateCost()}"/>
+                                    <h:inputText id="price" class="form-control" value="#{purchasesController.purchaseItem.unitCostPrice}" />
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="product">Total Cost</label>
-                                    <input type="text" id="totalCost" class="form-control" jsf:value="#{purchasesController.purchaseItem.totalAmount}"  />
+                                    <label for="totalCost">Total Cost</label>
+                                    <h:inputText id="totalCost" class="form-control" value="#{purchasesController.purchaseItem.totalAmount}" />
                                 </div>    
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Add Product</button>&nbsp;
+                            <button type="submit" class="btn btn-primary" jsf:action="#{purchasesController.addPurchaseItem()}">Add Product</button>&nbsp;
                             <button type="submit" class="btn btn-danger" jsf:action="#{manufacturerController.clearMethod()}">Clear</button>
                         </div>
                     </h:form>
@@ -99,15 +102,15 @@
                                 </thead>
                                 <tbody>
                                    <h:form>
-                                        <ui:repeat value="#{customerCategoryController.findAll()}" var="customerCategory">
+                                       <ui:repeat value="#{purchasesController.purchaseItems}" var="purchaseItem">
                                             <tr>
-                                                <td>#{customerCategory.catgeoryName}</td>
-                                                <td>#{customerCategory.catgeoryCode}</td>
-                                                <td>#{customerCategory.creditLimit}</td>
-                                                <td>#{customerCategory.creditLimit}</td>
+                                                <td>#{purchaseItem.supplierProduct}</td>
+                                                <td>#{purchaseItem.quantity}</td>
+                                                <td>#{purchaseItem.unitCostPrice}</td>
+                                                <td>#{purchaseItem.totalAmount}</td>
                                                 <td>
-                                                    <button type="submit" class=" btn btn-sm btn-info" jsf:action="#{customerCategoryController.editMethod(customerCategory)}"><span class="ti-pencil"></span></button>
-                                                    <button type="submit" class=" btn btn-sm btn-danger" jsf:action="#{customerCategoryController.deleteMethod(customerCategory)}"><span class="ti-trash"></span></button>
+                                                    <button type="submit" class=" btn btn-sm btn-info"><span class="ti-pencil"></span></button>
+                                                    <button type="submit" class=" btn btn-sm btn-danger"><span class="ti-trash"></span></button>
                                                 </td>
 
                                             </tr>

@@ -9,6 +9,7 @@ import com.genesys.mpharma.abstracts.MPharmaMethods;
 import com.genesys.mpharma.entity.EntityModel;
 import com.genesys.mpharma.entity.purchases.PurchaseItem;
 import com.genesys.mpharma.entity.purchases.Purchases;
+import com.genesys.mpharma.entity.suppliers.SupplierProduct;
 import com.genesys.mpharma.service.IdGenerator;
 import com.genesys.mpharma.service.MPharmaService;
 import com.genesys.mpharma.util.Msg;
@@ -49,6 +50,9 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     @Getter
     @Setter
     private List<PurchaseItem> purchaseItems = new ArrayList<>();
+    
+    @Getter
+    private List<SupplierProduct> supplierProducts = new ArrayList<>();
     
     /**
      * Creates a new instance of PurchasesController
@@ -96,6 +100,7 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     public void addPurchaseItem(){
         purchaseItems.add(purchaseItem);
         purchaseItem = new PurchaseItem();
+        System.out.println(purchaseItems.size());
     }
     
     public void saveItems(){
@@ -109,8 +114,28 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     }
     
     public void updateCost(){
-        if(purchaseItem.getUnitCostPrice() != null){
-            purchaseItem.setTotalAmount(20d);
+        if(purchaseItem.getUnitCostPrice() != null && purchaseItem.getQuantity() != 0){
+            double value = purchaseItem.getUnitCostPrice()*purchaseItem.getQuantity();
+            purchaseItem.setTotalAmount(value);
+        }
+        else{
+            purchaseItem.setTotalAmount(0.0);
+        }
+    }
+    
+    public void resetPage(){
+        purchases = new Purchases();
+        purchaseItem = new PurchaseItem();
+        purchaseItems = new ArrayList<>();
+    }
+    
+    public void loadSupplierProducts(){
+        
+        if(purchases.getSupplier() != null){
+            supplierProducts = mPharmaService.getSupplierProductBySupplier(purchases.getSupplier());
+            System.out.println(supplierProducts.size());
+        }else{
+            supplierProducts = new ArrayList<>();
         }
     }
     

@@ -49,4 +49,11 @@ public class Product extends EntityModel {
 
     @Column(name = "note")
     private String note;
+
+    @Override
+    public String toString() {
+        return medicineName;
+    }
+    
+    
 }

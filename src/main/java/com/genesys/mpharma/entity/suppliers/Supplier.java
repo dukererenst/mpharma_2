@@ -38,4 +38,9 @@ public class Supplier extends EntityModel {
     
     @Column(name = "supplier_location")
     private String supplierLocation;
+
+    @Override
+    public String toString() {
+        return supplierName;
+    } 
 }

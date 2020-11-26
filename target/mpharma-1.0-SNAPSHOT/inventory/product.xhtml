@@ -89,7 +89,6 @@
                                 </thead>
                                 <tbody>
                                    <h:form>
-                                    <tbody>
                                         <ui:repeat value="#{productController.findAll()}" var="medicine">
                                             <tr>
                                                 <td>#{medicine.medicineName}</td>
@@ -103,7 +102,6 @@
 
                                             </tr>
                                         </ui:repeat>
-                                    </tbody> 
                                 </h:form>
                                 </tbody> 
                             </table>

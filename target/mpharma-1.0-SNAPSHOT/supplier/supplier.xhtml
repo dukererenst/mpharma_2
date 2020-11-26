@@ -71,12 +71,11 @@
                                 </thead>
                                 <tbody>
                                    <h:form>
-                                    <tbody>
                                         <ui:repeat value="#{supplierController.findAll()}" var="supplier">
                                             <tr>
-                                                <td>#{supplier.manufacturerName}</td>
-                                                <td>#{supplier.manufacturerTelephone}</td>
-                                                <td>#{supplier.manufacturerLocation}</td>
+                                                <td>#{supplier.supplierName}</td>
+                                                <td>#{supplier.supplierTelephone}</td>
+                                                <td>#{supplier.supplierLocation}</td>
                                                 <td>
                                                     <button type="submit" class=" btn btn-sm btn-info" jsf:action="#{supplierController.editMethod(supplier)}"><span class="ti-pencil"></span></button>
                                                     <button type="submit" class=" btn btn-sm btn-danger" jsf:action="#{supplierController.deleteMethod(supplier)}"><span class="ti-trash"></span></button>
@@ -84,7 +83,6 @@
 
                                             </tr>
                                         </ui:repeat>
-                                    </tbody> 
                                 </h:form>
                                 </tbody> 
                             </table>
