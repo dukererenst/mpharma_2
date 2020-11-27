@@ -55,6 +55,7 @@ com\genesys\mpharma\controller\LoginController.class
 com\genesys\mpharma\entity\setting\BankAccount_.class
 com\genesys\mpharma\entity\EntityModel.class
 com\genesys\mpharma\entity\suppliers\Supplier_.class
+com\genesys\mpharma\convertor\SupplierProductConvertor.class
 com\genesys\mpharma\entity\purchases\Purchases.class
 com\genesys\mpharma\controller\inventory\ProductController.class
 com\genesys\mpharma\controller\inventory\WareHouseController.class

@@ -16,9 +16,16 @@ import com.genesys.mpharma.util.Msg;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
@@ -54,6 +61,10 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     @Getter
     private List<SupplierProduct> supplierProducts = new ArrayList<>();
     
+    @Getter
+    @Setter
+    private String date;
+    
     /**
      * Creates a new instance of PurchasesController
      */
@@ -62,6 +73,13 @@ public class PurchasesController implements Serializable, MPharmaMethods {
 
     @Override
     public void saveMethod() {
+        System.out.print("Saving>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            try {
+            convertDate();
+        } catch (ParseException ex) {
+            Logger.getLogger(PurchasesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(purchases.getPurchaseDate());
         idGenerator.uniqueEntityId(purchases);
         if (mPharmaService.save(purchases) != null) {
             saveItems();
@@ -76,6 +94,7 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     @Override
     public void clearMethod() {
         purchases = new Purchases();
+        supplierProducts = new ArrayList<>();
     }
 
     @Override
@@ -100,7 +119,7 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     public void addPurchaseItem(){
         purchaseItems.add(purchaseItem);
         purchaseItem = new PurchaseItem();
-        System.out.println(purchaseItems.size());
+        updateDate();
     }
     
     public void saveItems(){
@@ -123,20 +142,25 @@ public class PurchasesController implements Serializable, MPharmaMethods {
         }
     }
     
-    public void resetPage(){
-        purchases = new Purchases();
-        purchaseItem = new PurchaseItem();
-        purchaseItems = new ArrayList<>();
-    }
-    
-    public void loadSupplierProducts(){
-        
+    public void loadSupplierProducts() {
+        System.out.println("start");
         if(purchases.getSupplier() != null){
             supplierProducts = mPharmaService.getSupplierProductBySupplier(purchases.getSupplier());
             System.out.println(supplierProducts.size());
         }else{
             supplierProducts = new ArrayList<>();
         }
+        System.out.println("ends");
+    }
+    
+    public void convertDate() throws ParseException{
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = format.parse(date);
+        purchases.setPurchaseDate(convertedDate);
+    }
+    
+    private void updateDate(){
+        setDate(date);
     }
     
 }
