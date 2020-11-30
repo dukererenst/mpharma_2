@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary" jsf:action="#{wareHouseController.saveMethod()}">Save</button>
+                            <button type="submit" class="btn btn-primary" jsf:action="#{wareHouseController.saveMethod()}">Save</button>&nbsp;
                             <button type="submit" class="btn btn-danger" jsf:action="#{wareHouseController.clearMethod()}">Clear</button>
                         </div>
                     </h:form>
@@ -53,15 +53,14 @@
                             <table id="default-datatable" class="display table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Warehouse Name</th>
-                                        <th>Warehouse Code</th>
+                                        <th>Name</th>
+                                        <th>Code</th>
                                         <th>Location</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                    <h:form>
-                                    <tbody>
                                         <ui:repeat value="#{wareHouseController.findAll()}" var="warehouse">
                                             <tr>
                                                 <td>#{warehouse.wareHouseName}</td>
@@ -74,7 +73,6 @@
 
                                             </tr>
                                         </ui:repeat>
-                                    </tbody> 
                                 </h:form>
                                 </tbody> 
                             </table>

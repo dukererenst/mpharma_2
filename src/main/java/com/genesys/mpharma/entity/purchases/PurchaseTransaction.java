@@ -44,7 +44,7 @@ public class PurchaseTransaction extends EntityModel {
     @ManyToOne
     private Supplier supplier;
     
-     @Column(name = "transaction_date")
+    @Column(name = "transaction_date")
     @Temporal(TemporalType.DATE)
     private Date transactionDate;
 }

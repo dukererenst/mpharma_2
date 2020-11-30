@@ -7,7 +7,10 @@ package com.genesys.mpharma.controller.purchases;
 
 import com.genesys.mpharma.abstracts.MPharmaMethods;
 import com.genesys.mpharma.entity.EntityModel;
+import com.genesys.mpharma.entity.enums.TransactionType;
+import com.genesys.mpharma.entity.inventory.WareHouse;
 import com.genesys.mpharma.entity.purchases.PurchaseItem;
+import com.genesys.mpharma.entity.purchases.PurchaseTransaction;
 import com.genesys.mpharma.entity.purchases.Purchases;
 import com.genesys.mpharma.entity.suppliers.SupplierProduct;
 import com.genesys.mpharma.service.IdGenerator;
@@ -65,6 +68,14 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     @Setter
     private String date;
     
+    @Getter
+    @Setter
+    private TransactionType transactionType;
+    
+    private static double totalAmount;
+    
+    PurchaseTransaction purchaseTransaction  = new PurchaseTransaction();
+    
     /**
      * Creates a new instance of PurchasesController
      */
@@ -73,20 +84,33 @@ public class PurchasesController implements Serializable, MPharmaMethods {
 
     @Override
     public void saveMethod() {
-        System.out.print("Saving>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            try {
+        try {
             convertDate();
         } catch (ParseException ex) {
             Logger.getLogger(PurchasesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(purchases.getPurchaseDate());
-        idGenerator.uniqueEntityId(purchases);
-        if (mPharmaService.save(purchases) != null) {
-            saveItems();
-            Msg.successSave();
-            clearMethod();
-        } 
-        else {
+        
+        idGenerator.uniqueEntityId(purchaseTransaction);
+        purchaseTransaction.setTotalAmount(totalAmount);
+        purchaseTransaction.setSupplier(purchases.getSupplier());
+        purchaseTransaction.setTransactionDate(purchases.getPurchaseDate());
+        purchaseTransaction.setCreatedOn(new Date());
+        
+        if (mPharmaService.save(purchaseTransaction) != null) {
+            idGenerator.uniqueEntityId(purchases);
+            purchases.setTotalAmount(totalAmount);
+            purchases.setPurchaseTransaction(purchaseTransaction);
+            
+            if (mPharmaService.save(purchases) != null) {
+                saveItems();
+                Msg.successSave();
+                clearMethod();
+            } 
+            else {
+                Msg.failedDelete();
+            }
+        }
+        else{
             Msg.failedDelete();
         }
     }
@@ -95,6 +119,10 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     public void clearMethod() {
         purchases = new Purchases();
         supplierProducts = new ArrayList<>();
+        date = "";
+        totalAmount = 0.0;
+        transactionType = null;
+        purchaseTransaction = new PurchaseTransaction();
     }
 
     @Override
@@ -118,6 +146,7 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     
     public void addPurchaseItem(){
         purchaseItems.add(purchaseItem);
+        totalAmount = totalAmount + purchaseItem.getTotalAmount();
         purchaseItem = new PurchaseItem();
         updateDate();
     }
@@ -143,14 +172,11 @@ public class PurchasesController implements Serializable, MPharmaMethods {
     }
     
     public void loadSupplierProducts() {
-        System.out.println("start");
         if(purchases.getSupplier() != null){
             supplierProducts = mPharmaService.getSupplierProductBySupplier(purchases.getSupplier());
-            System.out.println(supplierProducts.size());
         }else{
             supplierProducts = new ArrayList<>();
         }
-        System.out.println("ends");
     }
     
     public void convertDate() throws ParseException{
@@ -163,4 +189,17 @@ public class PurchasesController implements Serializable, MPharmaMethods {
         setDate(date);
     }
     
+    public void updatePurchaseForm(){
+        purchases.setWareHouse(purchases.getWareHouse());
+        purchases.setNote(purchases.getNote());
+    }
+    
+    public void removePurchaseItem(PurchaseItem item){
+        purchaseItems.remove(item);
+    }
+    
+    public void updateTransactionType(){
+        purchaseTransaction.setTransactionType(transactionType);
+        setTransactionType(transactionType);
+    }
 }

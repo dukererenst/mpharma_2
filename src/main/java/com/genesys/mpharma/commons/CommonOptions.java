@@ -8,9 +8,12 @@ package com.genesys.mpharma.commons;
 import com.genesys.mpharma.entity.customer.CustomerCategory;
 import com.genesys.mpharma.entity.enums.CustomerGroup;
 import com.genesys.mpharma.entity.enums.CustomerStatus;
+import com.genesys.mpharma.entity.enums.TransactionType;
 import com.genesys.mpharma.entity.inventory.Product;
 import com.genesys.mpharma.entity.inventory.ProductCategory;
+import com.genesys.mpharma.entity.inventory.WareHouse;
 import com.genesys.mpharma.entity.manufacturer.Manufacturer;
+import com.genesys.mpharma.entity.purchases.Purchases;
 import com.genesys.mpharma.entity.setting.Bank;
 import com.genesys.mpharma.entity.setting.MobileNetwork;
 import com.genesys.mpharma.entity.suppliers.Supplier;
@@ -74,7 +77,19 @@ public class CommonOptions implements Serializable {
         return mPharmaService.findAll(CustomerCategory.class);
     }
     
+    public List<WareHouse> getWarehouses(){
+        return mPharmaService.findAll(WareHouse.class);
+    }
+    
     public List<CustomerStatus> getCustomerStatuses(){
         return Arrays.asList(CustomerStatus.values());
+    }
+    
+    public List<TransactionType> getTransactionTypes(){
+        return Arrays.asList(TransactionType.values());
+    }
+    
+    public List<Purchases> getPurchaseses(){
+        return mPharmaService.findAll(Purchases.class);
     }
 }

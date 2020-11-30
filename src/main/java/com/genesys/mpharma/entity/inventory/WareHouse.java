@@ -30,4 +30,9 @@ public class WareHouse extends EntityModel{
     
     @Column(name = "warehouse_lcoation")
     private String wareHouseLocation;
+
+    @Override
+    public String toString() {
+        return wareHouseName;
+    }
 }

@@ -11,6 +11,7 @@ com\genesys\mpharma\controller\setting\CompanyBranchController.class
 com\genesys\mpharma\entity\inventory\WareHouse.class
 com\genesys\mpharma\entity\inventory\ProductCategory.class
 com\genesys\mpharma\controller\purchases\PurchasesController.class
+com\genesys\mpharma\convertor\WareHouseConvertor.class
 com\genesys\mpharma\entity\purchases\PurchaseItem.class
 com\genesys\mpharma\entity\manufacturer\Manufacturer_.class
 com\genesys\mpharma\entity\customer\Customer_.class

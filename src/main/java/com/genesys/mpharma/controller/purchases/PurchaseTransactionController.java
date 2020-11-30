@@ -8,6 +8,7 @@ package com.genesys.mpharma.controller.purchases;
 import com.genesys.mpharma.abstracts.MPharmaMethods;
 import com.genesys.mpharma.entity.EntityModel;
 import com.genesys.mpharma.entity.purchases.PurchaseTransaction;
+import com.genesys.mpharma.entity.purchases.Purchases;
 import com.genesys.mpharma.service.IdGenerator;
 import com.genesys.mpharma.service.MPharmaService;
 import com.genesys.mpharma.util.Msg;
@@ -18,6 +19,7 @@ import java.util.List;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
+import org.omnifaces.util.Faces;
 
 /**
  *
@@ -79,6 +81,12 @@ public class PurchaseTransactionController implements Serializable, MPharmaMetho
     @Override
     public List findAll() {
         return mPharmaService.findAll(PurchaseTransaction.class);
+    }
+    
+    
+    public void navigate(Purchases purchases){
+        purchaseTransaction = purchases.getPurchaseTransaction();
+        Faces.redirect("app/purchases/purchase_transaction_history.xhtml");
     }
     
 }
